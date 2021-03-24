@@ -12,9 +12,7 @@ app.get('/', (req, res) => {
 
   }
   else {
-    res.write('Hello kamrul \n')
-    res.write('Today is not weekend so you have to work today !!!')
-    res.send()
+    res.sendFile(__dirname + '/index.html')
   }
 })
 
