@@ -4,7 +4,8 @@
 
 <head>
   <meta charset="utf-8">
-  <title>To do list</title>
+  <title>To Do list</title>
+  <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
@@ -12,14 +13,14 @@
   <h1><%= kindOfDay %></h1>
   <ul>
 
-    <% for(var i = 0; i<newitems.length; i++){ %>
-    <li><%= newitems[i] %></li>
+    <% for(var i = 0; i<newListItems.length; i++){ %>
+    <li><%= newListItems[i] %></li>
     <% } %>
 
   </ul>
 
   <form class="" action="/" method="post">
-    <input type="text" name="newitem">
+    <input type="text" name="newItem">
     <button type="submit" name="button">ADD</button>
   </form>
 
