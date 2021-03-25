@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>To do list</title>
-  </head>
-  <body>
 
-    <h1><%= kindOfDay %></h1>
+<head>
+  <meta charset="utf-8">
+  <title>To do list</title>
+</head>
+
+<body>
+
+  <h1><%= kindOfDay %></h1>
+  <ul>
+
+    <% for(var i = 0; i<newitems.length; i++){ %>
+    <li><%= newitems[i] %></li>
+    <% } %>
+
+  </ul>
+
+  <form class="" action="/" method="post">
+    <input type="text" name="newitem">
+    <button type="submit" name="button">ADD</button>
+  </form>
 
 
-  </body>
+</body>
+
 </html>
