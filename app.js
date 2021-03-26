@@ -10,6 +10,7 @@ app.use(express.static ('public'))
 
 
 let items = ['Eat', 'Food', 'Sleep']
+let workItem = []
 
 app.get('/', (req, res) => {
   let today = new Date()
@@ -20,15 +21,30 @@ app.get('/', (req, res) => {
     day: 'numeric'
   }
   day = today.toLocaleDateString("en-US", options);
-  res.render('list', {kindOfDay: day, newListItems: items})
+  res.render('list', {listTitle: day, newListItems: items})
 })
 
 
 app.post('/', function(req, res) {
   let item = req.body.newItem
-  items.push(item)
-  res.redirect('/')
+  if(req.body.list==='work'){
+    workItem.push(item)
+    res.redirect('/work')
+  }else {
+    items.push(item)
+    res.redirect('/')
+  }
+
 })
+
+
+app.get('/work',function(req,res){
+  res.render('list',{listTitle: 'work', newListItems: workItem})
+})
+
+// app.post('/work',function(req,res){
+//   res.redirect('/')
+// })
 
 
 app.listen(port, () => {
