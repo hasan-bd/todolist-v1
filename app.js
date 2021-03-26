@@ -42,10 +42,9 @@ app.get('/work',function(req,res){
   res.render('list',{listTitle: 'work', newListItems: workItem})
 })
 
-// app.post('/work',function(req,res){
-//   res.redirect('/')
-// })
-
+app.get('/about',function(req,res){
+  res.render('about')
+})
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
