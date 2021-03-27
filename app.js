@@ -1,5 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
+const date = require(__dirname + '/date.js')
 
 const app = express()
 const port = 3000
@@ -9,24 +10,17 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(express.static ('public'))
 
 
-let items = ['Eat', 'Food', 'Sleep']
-let workItem = []
+const items = ['Eat', 'Food', 'Sleep']
+const workItem = []
 
 app.get('/', (req, res) => {
-  let today = new Date()
-  let options = {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  }
-  day = today.toLocaleDateString("en-US", options);
+  const day = date.getDate()
   res.render('list', {listTitle: day, newListItems: items})
 })
 
 
 app.post('/', function(req, res) {
-  let item = req.body.newItem
+  const item = req.body.newItem
   if(req.body.list==='work'){
     workItem.push(item)
     res.redirect('/work')
@@ -39,7 +33,8 @@ app.post('/', function(req, res) {
 
 
 app.get('/work',function(req,res){
-  res.render('list',{listTitle: 'work', newListItems: workItem})
+  const day = date.getOnlyDay()
+  res.render('list',{listTitle: day +'s, Work', newListItems: workItem})
 })
 
 app.get('/about',function(req,res){
